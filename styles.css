@@ -84,6 +84,66 @@ img {
   border-radius: 1em;
 }
 
+form {
+  display: grid;
+  gap: 12px; /* Spacing between elements */
+  background: #f2f6f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+output {
+  display: block;
+  margin: 0.1em;
+}
+
+.error {
+  color: red;
+  font-size: 0.5em;
+}
+
+.info {
+  color: gray;
+  font-size: 0.5em;
+}
+
+/* Labels */
+label {
+ font-size: 1.5em;
+ margin: 0.5em;
+}
+
+/* Input and Textarea */
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 1em;
+  max-width: 800px;
+}
+
+/* Submit Button */
+button {
+  padding: 10px;
+  background: #5a554c;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+button:hover {
+  background: #0056b3;
+}
+
 /* Homepage welcome renders*/
 .Header-renders {
   width: 100%;
@@ -153,6 +213,19 @@ svg {
   background-color: #f8f8f8;
   border-radius: 2em;
   margin: 3em auto;
+}
+
+/* Contact page CSS grid */
+.contact { 
+  display: flex;
+  max-width: 100em;
+  grid-template-columns: 1fr 2fr; 
+  gap: 1em;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5em;
+  border-radius: 2em;
+  margin: 0 auto;
 }
 
 /* Homepage CSS grid*/
