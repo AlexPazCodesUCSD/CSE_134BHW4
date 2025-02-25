@@ -23,17 +23,21 @@
     <h1>Contact</h1>
 
     <h2>Contact Me Here:</h2>
-    <form action="https://httpbin.org/post" method="POST">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
+    <form action="https://httpbin.org/post" method="POST" >
+        <label for="name" placeholder="Type your full name">Name: 
+          <input type="text" id="name" name="name" required>
+        </label>
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
+        <label for="email" placeholder="Type your email here">Email:
+          <input type="email" id="email" name="email" required>
+        </label>
+        
 
-        <label for="comments">Comments:</label>
-        <textarea id="comments" name="comments" required></textarea>
-
-        <input type="hidden" name="possible_bot" value="true">
+        <label for="comments" placeholder="Type your comment here">Comments:
+          <textarea id="comments" name="comments" required></textarea>
+        </label>
+        
+        <input type="hidden" id="hidden_bot" name="possible_bot" value="true">
 
         <button type="submit">Submit</button>
     </form>
