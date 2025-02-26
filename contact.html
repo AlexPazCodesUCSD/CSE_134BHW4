@@ -22,31 +22,38 @@
   <main>
     <h1>Contact</h1>
 
-    <h2>Contact Me Here:</h2>
+    
     <section class="contact">
+      <h2>Contact Me Here:</h2>
       <form action="https://httpbin.org/post" method="POST" >
-        <label for="name" placeholder="Type your full name">Name: 
-          <input type="text" id="name" name="name" required>
-          <output for="name" id="error-message" class="error">Error!</output>
+
+        <div class="form-item-1">
+          <label for="name">Name
+          <input type="text" id="name" name="name" placeholder="Type your full name" required>
+          <output for="name" id="error-message" class="error">Error, invalid name</output>
           <output for="name" id="info-message" class="info">Tell me your name.</output>
-        </label>
+          </label>
+        </div>
         
-
-        <label for="email" placeholder="Type your email here">Email:
-          <input type="email" id="email" name="email" required>
-          <output for="email" id="error-message" class="error">Error!</output>
+        <div class="form-item-1">
+          <label for="email">Email
+          <input type="email" id="email" name="email"  placeholder="Type your email here" required>
+          <output for="email" id="error-message" class="error">Error, invalid email</output>
           <output for="email" id="info-message" class="info">Please type in a valid email.</output>
-        </label>
+          </label>
+        </div>
         
-
-        <label for="comments" placeholder="Type your comment here">Comments:
-          <textarea id="comments" name="comments" rows="6" required></textarea>
-          <output for="comments" id="error-message" class="error">Error!</output>
-        </label>
+        <div class="form-item-2">
+          <label for="comments">Comments
+          <textarea id="comments" name="comments" rows="6" placeholder="Type your comment here" required></textarea>
+          <output for="comments" id="error-message" class="error">Error, invalid comment</output>
+          </label>
+        </div>
         
         <input type="hidden" id="hidden_bot" name="possible_bot" value="true">
 
         <button type="submit">Submit</button>
+        
       </form>
     </section>
     
