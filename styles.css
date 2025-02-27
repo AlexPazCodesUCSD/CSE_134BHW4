@@ -116,7 +116,7 @@ output {
 
 /* Labels */
 label {
- font-size: 1em;
+ font-size: 1.3em;
  width: 100%;
  text-align: left;
  font-weight: bold;
@@ -126,23 +126,24 @@ label {
 input {
   width: 100%;
   padding: 15px;
-  border: 1px solid #ccc;
   border-radius: 3px;
-  font-size: 0.8em;
+  font-size: 1em;
   max-width: 800px;
   text-align: left;
   box-sizing: border-box;
+  border: 2px solid #ccc;
 }
 
 textarea {
   width: 100%;
   padding: 15px;
-  border: 1px solid #ccc;
   border-radius: 3px;
-  font-size: 0.8em;
+  font-size: 1em;
   max-width: 800px;
   text-align: left;
   box-sizing: border-box;
+  font-family: 'DM Sans', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  border: 2px solid #ccc;
 }
 
 .form-item-1{
@@ -153,12 +154,40 @@ textarea {
   grid-column: span 2;
 }
 
+input:placeholder-shown, textarea:placeholder-shown {
+  background-color: rgba(211, 211, 211, 0.334);
+  color: #aaa; 
+  border-radius: 3px;
+}
+
+input:required:focus, textarea:required:focus {
+  border: none;
+  outline: 2px solid rgb(42, 142, 225);
+  border-radius: 3px;
+}
+
+input:not(:placeholder-shown), textarea:not(:placeholder-shown) {
+  background-color: white;
+  color: black; 
+  border-radius: 3px;
+}
+
 input::placeholder, 
 textarea::placeholder {
-  font-size: 0.8em; 
-  color: #888; 
+  font-size: 1em; 
+  color: #4e4d4d; 
   opacity: 30%; 
   font-family: 'DM Sans', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  border-radius: 3px;
+}
+
+input:invalid, textarea:invalid {
+  background-color: #f6d2d2;
+}
+
+input:valid, textarea:valid {
+  border: 2px solid green;
+  border-radius: 3px;
 }
 
 button {
