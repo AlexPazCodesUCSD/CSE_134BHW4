@@ -98,20 +98,62 @@ form {
   margin: 10px;
 }
 
+.form-errors {
+  display: none;
+  align-content: center;
+  width: 100%;
+  background-color: pink;
+  padding: 5px 15px;
+  max-width: 800px;
+  text-align: left;
+  box-sizing: border-box;
+  border-radius: 5px;
+  margin: 0 auto;
+}
+
 output {
-  display: block;
   margin: 0.5em;
+  display: inline;
+  font-size: 0.8em;
 }
 
 .error {
   color: red;
   font-size: 0.5em;
-  background-color: rgb(222, 181, 181)
+  display: none;
 }
 
-.info {
+@keyframes numShake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes fade {
+  0% {
+    opacity: 1;
+    display: inline;
+  }
+
+  100%{
+    opacity: 0;
+    display: inline;
+  }
+}
+
+.fade {
+  animation: fade 3s ease-out;
+}
+
+.shake {
+  animation: numShake 0.3s;
+}
+.remaining-count {
   color: gray;
   font-size: 0.5em;
+  display: block;
 }
 
 /* Labels */
@@ -132,6 +174,34 @@ input {
   text-align: left;
   box-sizing: border-box;
   border: 2px solid #ccc;
+  background-color: white;
+}
+
+@keyframes flash {
+  0% {
+    background-color:red;
+  }
+  100% {
+    background-color: #ffffff; /* Fully invisible */
+  }
+}
+
+input.flash, textarea.flash {
+  display: inline; /* Make it visible */
+  animation: flash 1s;
+}
+
+textarea {
+  width: 100%;
+  padding: 15px;
+  border-radius: 3px;
+  font-size: 1em;
+  max-width: 800px;
+  text-align: left;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  font-family: 'DM Sans', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: white;
 }
 
 label span {
@@ -148,25 +218,19 @@ label span {
   grid-column: span 2;
 }
 
-input:placeholder-shown {
+input:placeholder-shown, textarea:placeholder-shown {
   background-color: rgba(211, 211, 211, 0.334);
   color: #aaa; 
   border-radius: 3px;
 }
 
-input:required:focus {
+input:required:focus, textarea:required:focus {
   border: none;
   outline: 2px solid rgb(42, 142, 225);
   border-radius: 3px;
 }
 
-input:not(:placeholder-shown) {
-  background-color: white;
-  color: black; 
-  border-radius: 3px;
-}
-
-input::placeholder {
+input::placeholder, textarea::placeholder {
   font-size: 1em; 
   color: #4e4d4d; 
   opacity: 30%; 
@@ -174,12 +238,13 @@ input::placeholder {
   border-radius: 3px;
 }
 
-input:user-invalid {
-  background-color: #f6d2d2;
+input.valid, textarea.valid {
+  border: 2px solid green;
+  border-radius: 3px;
 }
 
-input:user-valid {
-  border: 2px solid green;
+input.invalid, textarea.invalid {
+  border: 2px solid red;
   border-radius: 3px;
 }
 

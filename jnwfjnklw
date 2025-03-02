@@ -1,0 +1,158 @@
+
+
+        const form = document.getElementById("comment-form");
+        const fields = 
+            [{ input: document.getElementById("name"), error: document.getElementById("error-name"), pattern: /^[a-zA-Z0-9 ]+$/ },
+            { input: document.getElementById("title"), error: document.getElementById("error-title"), pattern: /^[a-zA-Z0-9 ]+$/ },
+            { input: document.getElementById("comments"), error: document.getElementById("error-comment"), pattern: /^[a-zA-Z0-9 ]+$/ }];
+
+        const error_array = []; 
+        const error_list = document.getElementById("error-list");
+
+        // Check if a field is valid
+        const isValidField = (inputElement, pattern) => {
+          return inputElement.value.trim().length !== 0 && pattern.test(inputElement.value);
+        };
+
+        // Update input field styling based on validity
+        const setFieldClass = (input, isValid) => {
+          input.className = isValid ? "valid" : "invalid";
+        };
+
+        const updateError = (isValidInput, userInteracted, error, input) => {
+          const field = input.id;
+
+            if (userInteracted) { 
+              if (input.value === "") {
+                error.style.display = "none";
+                removeError(field);
+              }
+              else{
+                
+                if(!isValidInput){
+                  error.style.display = "inline";
+                  addError(field, error.textContent + " in " + input.name + ".");
+                  input.classList.remove("flash");
+                  input.classList.add("flash");
+                }
+
+                else{
+                  removeError(field);
+                  error.style.display = "none";
+                }
+              }
+                
+            } else {
+                error.style.display = "none";
+                removeError(field);
+            }
+        };
+
+        // Function to update the displayed errors
+        const updateErrorDisplay = () => {
+          error_list.innerHTML = ""; // Clear previous errors
+
+          if (error_array.length > 0) {
+              const ul = document.createElement("ul");
+              error_array.forEach((error) => {
+                  const li = document.createElement("li");
+                  li.textContent = error.message;
+                  ul.appendChild(li);
+              });
+              error_list.appendChild(ul);
+              error_list.style.display = "block";
+          } else {
+            error_list.style.display = "none"; // Hide the container if no errors
+          }
+        };
+
+        const updateCount = () => {
+          const info = document.getElementById("remaining-num");
+          const remaining = 800 - document.getElementById("comments").value.length;
+          info.textContent = `${remaining}`;
+        
+          if (remaining > 50) {
+              info.style.color = "black"; 
+              info.classList.remove('shake');
+
+          } else if (remaining > 0) {
+              info.style.color = "orange";
+              info.classList.remove('shake');
+
+          } else {
+              info.style.color = "red";
+              info.classList.add('shake');
+          }
+      };
+
+        // Initialize validation on page load
+        const initializeValidation = () => {
+            fields.forEach(({ input, error }) => {
+                updateError(false, false, error, input); // Hide errors initially
+            });
+            updateCount();
+        };
+
+        const addError = (field, message) => {
+          // Check if the error is already in the array
+          if (!error_array.some((error) => error.field === field)) {
+            error_array.push({ field, message });
+          }
+          updateErrorDisplay();
+      };
+
+      // Function to remove an error from the array
+        const removeError = (field) => {
+          // Remove the error for the specific field
+          const i = error_array.findIndex((error) => error.field === field);
+          if (i !== -1) {
+            error_array.splice(i, 1);
+          }
+          updateErrorDisplay();
+        };
+
+        // Handle input event to dynamically update validation
+        const handleInput = (field) => {
+            const isValid = isValidField(field.input, field.pattern);
+            setFieldClass(field.input, isValid);
+            updateError(isValid, true, field.error, field.input); // User has interacted while typing
+            updateCount();
+        };
+
+        // Handle blur event to validate on focus loss
+        const handleBlur = (field) => {
+            const isValid = isValidField(field.input, field.pattern);
+            setFieldClass(field.input, isValid);
+            updateError(isValid, true, field.error, field.input); // Show errors after interaction
+        };
+
+        // Handle form submission to prevent invalid submission
+        const handleSubmit = (event) => {
+            let allValid = true;
+
+            fields.forEach((field) => {
+                const isValid = isValidField(field.input, field.pattern);
+                setFieldClass(field.input, isValid);
+                updateError(isValid, true, field.error);
+
+                if (!isValid) {
+                    allValid = false; // Prevent submission if any field is invalid
+                }
+            });
+
+            if (!allValid) {
+                event.preventDefault();
+            }
+        };
+
+        // Initialize validation on page load
+        window.addEventListener("load", initializeValidation);
+
+        // Attach input and blur event listeners to fields
+        fields.forEach((field) => {
+            field.input.addEventListener("input", () => handleInput(field));
+            field.input.addEventListener("blur", () => handleBlur(field));
+        });
+
+        // Add submit event listener to validate before submission
+        form.addEventListener("submit", handleSubmit);

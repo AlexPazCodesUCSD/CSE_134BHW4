@@ -25,53 +25,50 @@
     
     <section class="contact">
       <h2>Contact Me Here:</h2>
-      <form action="https://httpbin.org/post" method="POST" >
+      <form action="https://httpbin.org/post" method="POST" id="comment-form">
 
         <div class="form-item-1">
           <label for="name">Name <span>*</span>
-          <input type="text" id="name" name="name" pattern="^[a-zA-Z0-9 ]+$" placeholder="Type your full name here" minlength="2" maxlength="40" required>
-          <output for="name" id="error-message" class="error">Error, invalid name</output>
-          <output for="name" id="info-message" class="info">Tell me your name.</output>
+          <input type="text" id="name" name="name" class="form-text" placeholder="Type your full name here" maxlength="40" required>
+          <output for="name" id="error-name" class="error"></output>
           </label>
         </div>
         
         <div class="form-item-1">
           <label for="email">Email <span>*</span>
-          <input type="email" id="email" name="email" placeholder="Type your email here" minlength="4" maxlength="256" required>
-          <output for="email" id="error-message" class="error">Error, invalid email</output>
-          <output for="email" id="info-message" class="info">Please type in a valid email.</output>
+          <input type="email" id="email" name="email" class="form-email" placeholder="Type your email here" minlength="4" maxlength="256" required>
           </label>
         </div>
 
         <div class="form-item-1">
           <label for="occupation">Occupation
-          <input type="text" id="occupation" name="occupation" pattern="^[a-zA-Z0-9 ]+$" placeholder="Include your occupation (optional)" minlength="2" maxlength="40">
-          <output for="occupation" id="error-message" class="error">Error, invalid occupation</output>
-          <output for="occupation" id="info-message" class="info">Tell may tell me your occupation.</output>
+          <input type="text" id="occupation" name="occupation" class="form-text" placeholder="Include your occupation (optional)" maxlength="40">
           </label>
         </div>
 
         <div class="form-item-1">
           <label for="title">Comment Title <span>*</span>
-          <input type="text" id="title" name="title" placeholder="Include a title" pattern="^[a-zA-Z0-9 ]+$" 
-          minlength="2" maxlength="40" required>
-          <output for="title" id="error-message" class="error">Error, invalid title</output>
-          <output for="title" id="info-message" class="info">Give your message a title.</output>
+          <input type="text" id="title" name="title" class="form-text" placeholder="Include a title" maxlength="40" required>
+          <output for="title" id="error-title" class="error"></output>
           </label> 
         </div>
         
         <div class="form-item-2">
           <label for="comments">Comments <span>*</span>
-          <input id="comments" name="comments" placeholder="Type your comment here" minlength="1" 
-          maxlength="800" pattern="^[a-zA-Z0-9 ]+$"></input>
-          <output for="comments" id="error-message" class="error">Error, invalid comment</output>
+          <textarea id="comments" name="comments" class="form-text" placeholder="Type your comment here" maxlength="800" rows="10"></textarea>
+          <output id="remaining-num" class="remaining-count">800</output>
+          <output id="error-comment" class="error"></output>
+          
           </label>
         </div>
         
         <input type="hidden" id="hidden_bot" name="possible_bot" value="true">
 
+        <input type="hidden" id="form-errors" name="form-errors" />
+
         <button type="submit">Submit</button>
-        
+
+        <div id="error-list" class="form-errors form-item-2"></div>
       </form>
     </section>
     
@@ -85,7 +82,8 @@
       USA
     </address>
     
-    <audio src="sounds/hearthome.mp3" autoplay></audio>
+    <audio src="sounds/hearthome.mp3"></audio>
   </main>
+  <script src="script.js"></script>
 </body>
 </html>
