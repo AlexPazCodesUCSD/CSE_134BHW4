@@ -1,6 +1,7 @@
 :root {  /* Website theme */
   --background-color: #ffffff;
   --text-color: #000000;
+  --tab-background-color: #f2f6f9;
 }
 
 body {
@@ -19,6 +20,7 @@ main {
 
 h1 {
   font-size: 3em;
+  padding: 0 0 2em 0;
 }
 
 h2 {
@@ -90,7 +92,7 @@ form {
   align-items: center;
   justify-content: center;
   gap: 20px; 
-  background: #f2f6f9;
+  background: var(--tab-background-color);
   padding: 20px;
   border-radius: 8px;
   width: 100%;
@@ -144,7 +146,7 @@ output {
 }
 
 .fade {
-  animation: fade 3s ease-out;
+  animation: fade 4s;
 }
 
 .shake {
@@ -174,7 +176,8 @@ input {
   text-align: left;
   box-sizing: border-box;
   border: 2px solid #ccc;
-  background-color: white;
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
 
 @keyframes flash {
@@ -182,7 +185,7 @@ input {
     background-color:red;
   }
   100% {
-    background-color: #ffffff; /* Fully invisible */
+    background-color: var(--background-color); /* Fully invisible */
   }
 }
 
@@ -201,11 +204,12 @@ textarea {
   box-sizing: border-box;
   border: 2px solid #ccc;
   font-family: 'DM Sans', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  background-color: white;
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
 
 label span {
-  color: rgb(105, 103, 103);
+  color: red;
   font-size: 1em;
   font-weight: bold;
 }
@@ -259,6 +263,26 @@ button {
   max-width: 500px;
   grid-column: span 2;
   margin: 0 auto;
+}
+
+button#theme-button {
+  padding: 10px 50px;
+  background: var(--background-color);
+  color: var(--text-color);
+  border: none;
+  border-radius: 50px;
+  font-size: 16px;
+  cursor: pointer;
+  max-width: 200px;
+  width: 100%;
+  margin: 2px 5px 2px 10px;
+  text-align: center;
+  border: 2px solid black;
+}
+
+p#setting-label {
+  font-size: 0.8em;
+
 }
 
 button:hover {
@@ -331,7 +355,7 @@ svg {
   gap: 1em;
   align-items: center;
   padding: 1.5em;
-  background-color: #f8f8f8;
+  background-color: var(--tab-background-color);
   border-radius: 2em;
   margin: 3em auto;
 }
@@ -388,9 +412,10 @@ svg {
   padding: 0.5em 1em;
   border: 2px solid #2c3e50;
   border-radius: 0.5em;
-  background-color: white;
+  background-color: var(--tab-background-color);
   cursor: pointer;
   transition: border-color 1s ease-in-out;
+  color: var(--text-color);
 }
 
 .section-selector select:hover,
@@ -439,10 +464,6 @@ svg {
   padding: 0.8em;
   text-align: center;
   font-size: 1rem;
-}
-
-.academic_calendar tbody tr:nth-child(even) {
-  background-color: #f8f8f8; 
 }
 
 .academic_calendar tbody td p {
@@ -526,6 +547,7 @@ svg {
   :root {
     --background-color: #121212;
     --text-color: #ffffff;
+    --tab-background-color: #494949;
   }
 }
 
@@ -533,5 +555,6 @@ svg {
   :root {
     --background-color: #ffffff;
     --text-color: #000000;
+    --tab-background-color: #f2f6f9;
   }
 }

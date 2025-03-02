@@ -21,29 +21,12 @@
   </header>
   <main>
     <h1><i>Settings</i></h1>
-    
-    <dialog open>
-      <p>More settings coming soon!</p>
-      <form method="dialog">
-        <button>OK</button>
-      </form>
-    </dialog>
-  
-    <form>
-      <fieldset>
-          <legend>Select Your Preferred Mode</legend>
-          <label>
-              <input type="radio" name="mode" value="dark"> Dark Mode
-          </label><br>
-          <label>
-              <input type="radio" name="mode" value="light"> Light Mode
-          </label><br>
-          <label>
-              <input type="radio" name="mode" value="fun"> Fun Mode
-          </label><br><br>
-          <button type="submit">Submit</button>
-      </fieldset>
-    </form>
+
+    <hr>
+    <p class="setting-label">Theme Toggle</p>
+    <button id="theme-button">🌙</button>
+    <hr>
   </main>
+  <script src="settings.js"></script>
 </body>
 </html>
